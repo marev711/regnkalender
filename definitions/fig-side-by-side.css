@@ -1,0 +1,10 @@
+.side-by-side {
+    float: left;
+    width: 30%;
+    margin-right: 1%;
+    margin-bottom: 0.5em;
+}
+
+.stop-side-by-side {
+    clear: both;
+}

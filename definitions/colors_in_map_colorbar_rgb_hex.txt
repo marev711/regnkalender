@@ -1,19 +1,19 @@
-#68014c  80-85
-#9e1f73  75-80
-#b9026c  70-75
-#e11c80  65-70
-#d24ca3  60-65
-#c86cb3  55-60
-#a470b5  50-55
-#8169b0  45-50
-#8188bf  40-45
-#80b1d3  35-40
-#7fcfe3  30-35
-#a7ddeb  25-30
-#7fcb93  20-25
-#9ad47f  15-20
-#b2df96  10-15
-#cceaae  5-10
-#feffb4  3-5
-#ffe38b  1-3
-#ffca5d  0-1
+#68014c  80-85 20-more.png
+#9e1f73  75-80 20-more.png
+#b9026c  70-75 20-more.png
+#e11c80  65-70 20-more.png
+#d24ca3  60-65 20-more.png
+#c86cb3  55-60 20-more.png
+#a470b5  50-55 20-more.png
+#8169b0  45-50 20-more.png
+#8188bf  40-45 20-more.png
+#80b1d3  35-40 20-more.png
+#7fcfe3  30-35 20-more.png
+#a7ddeb  25-30 20-more.png
+#7fcb93  20-25 20-more.png
+#9ad47f  15-20 15-20.png
+#b2df96  10-15 10-15.png
+#cceaae  5-10   5-10.png
+#feffb4  3-5     3-5.png
+#ffe38b  1-3     1-3.png
+#ffca5d  0-1     0-1.png
