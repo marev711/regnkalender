@@ -34,11 +34,12 @@ def get_dominant_color(image_path):
 
 
 class labrange:
-    def __init__(self, hex_rgb, vrange):
+    def __init__(self, hex_rgb, vrange, fig_range):
         srgb = colormath.color_objects.sRGBColor(0,0,0)
         self.lab = convert_color(srgb.new_from_rgb_hex(hex_rgb), colormath.color_objects.LabColor)
         self.vrange = vrange
         self.delta_e = 1000000
+        self.fig_range = fig_range
 
     def distance(self, lab_cf):
         self.delta_e = delta_e_cie1976(self.lab, lab_cf)
@@ -49,9 +50,9 @@ def keydef(x):
 
 # Read refernce list
 def color2mm_range(hex_rgb):
-    f = open("colors_in_map_colorbar_rgb_hex.txt", "r")
+    f = open("definitions/colors_in_map_colorbar_rgb_hex.txt", "r")
     crange_list = list(csv.reader(f, delimiter='\t'))
-    crange = [labrange(cr[0].split()[0], cr[0].split()[1]) for cr in crange_list]
+    crange = [labrange(cr[0].split()[0], cr[0].split()[1], cr[0].split()[2]) for cr in crange_list]
     
     # Read requested value
     srgb = colormath.color_objects.sRGBColor(0,0,0)
@@ -61,4 +62,4 @@ def color2mm_range(hex_rgb):
         labr.distance(lab_hexed)
     
     crange_sorted = sorted(crange, key=keydef)
-    return crange_sorted[0].vrange
+    return crange_sorted[0].vrange,crange_sorted[0].fig_range
