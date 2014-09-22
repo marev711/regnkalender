@@ -3,6 +3,7 @@
 import calendar
 import datetime
 import markup
+from markup import oneliner as e
 import pdb
 import re
 
@@ -28,42 +29,48 @@ def main():
     current_day = int(re.sub('\A0', '', current[2]))
     current_yr = int(current[0])
 
-    print '''
- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" >
- <HTML >
- <head >
+    page = markup.page()
+    page.init(title="Regnkalender",
+              css=('definitions/calendar.css'),
+              header="",
+              footer="")
 
- <title >February 2007</title >
- <style type="text/css" >
- </style >
- </head >
+    page.div(id='container')
 
- <body >
+    page.b.open(class_='rtop')
+    page.b.open(class_='r1')
+    page.b.close()
+    page.b.open(class_='r2')
+    page.b.close()                                                                  
+    page.b.open(class_='r3')
+    page.b.close()                                                                  
+    page.b.open(class_='r4')
+    page.b.close()                                                                  
+    page.b.close()
 
- <div id="container" >
- <b class="rtop" ><b class="r1" ></b > <b class="r2" ></b ><b class="r3" ></b > <b class="r4" ></b ></b >'''
+    page.h1(current_month + " " + str(current_yr))
 
-    print '<h1> %s %s </h1 >' %(current_month, current_yr)
-    print '''
- <table id="month" >
- <thead >
- <tr >
- <th >M&#229;ndag</th >
- <th >Tisdag</th >
- <th >Onsdag</th >
- <th >Torsdag</th >
- <th >Fredag</th >
- <th class="weekend" >L&#246;rdag</th >
- <th class="weekend" >S&#246;ndag</th >
- </tr >
- </thead >
- <tbody >
- '''
+    page.table(id="month")
+    page.thead.open()
+    page.tr.open()
+    
+    page.th('M&#229;ndag')
+    page.th('Tisdag')
+    page.th('Onsdag')
+    page.th('Torsdag')
+    page.th('Fredag')
+    page.th('L&#246;rdag', class_="weekend")
+    page.th('S&#246;ndag', class_="weekend")
+    page.tr.close()
+    page.thead.close()
+
+    page.tbody.open()
+
     month = calendar.monthcalendar(current_yr, current_no)
     nweeks = len(month)
-    for w in range(0,nweeks):
+    for w in range(0, nweeks):
          week = month[w]
-         print "<tr>"
+         page.tr.open()
          for x in xrange(0,7):
              day = week[x]
              if x == 5 or x == 6:
@@ -72,17 +79,23 @@ def main():
                  classtype = 'day'
              if day == 0:
                  classtype = 'previous'
-                 print '<td class="%s"></td>' %(classtype)
+                 page.td(class_=classtype)
              else:
                  curr_date = datetime.datetime(current_yr, current_no, day).strftime("%y%m%d")
                  print curr_date
-                 print '<td class="%s">%s</span><div class="%s"></div></td>' %(classtype, day, classtype)
-         print "</tr>"
-    print ''' </tbody>
- </table>
- </div>
- </body>
- </html>'''
+                 page.td.open(class_=classtype)
+                 page.span(day)
+                 page.div(class_=classtype)
+                 page.td.close()
+         page.tr.close()
+    page.div.close()
+
+
+
+    fhtml = open("calendar.html", "w")
+    for line in page.content:
+        fhtml.write("%s\n" % line)
+    fhtml.close()
 
 if __name__ == "__main__": 
     main() 
