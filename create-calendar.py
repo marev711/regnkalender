@@ -5,7 +5,11 @@ import datetime
 import markup
 from markup import oneliner as e
 import pdb
+import os
 import re
+
+fig_folder = "figures"
+symbols = [fig for fig in os.listdir(fig_folder) if re.search("rrdm", fig) is None]
 
 year = ['Januari',
         'Februari',
@@ -67,6 +71,7 @@ def main():
     page.tbody.open()
 
     month = calendar.monthcalendar(current_yr, current_no)
+
     nweeks = len(month)
     for w in range(0, nweeks):
          week = month[w]
@@ -82,9 +87,16 @@ def main():
                  page.td(class_=classtype)
              else:
                  curr_date = datetime.datetime(current_yr, current_no, day).strftime("%y%m%d")
-                 print curr_date
+                 curr_weather = None
+                 for sym_file in symbols:
+                     if re.search(curr_date, sym_file) is not None:
+                         curr_weather = sym_file
+
                  page.td.open(class_=classtype)
                  page.span(day)
+
+                 if curr_weather is not None:
+                     page.img(src=os.path.join(fig_folder, curr_weather))
                  page.div(class_=classtype)
                  page.td.close()
          page.tr.close()
