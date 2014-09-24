@@ -104,7 +104,7 @@ def main():
 
 
 
-    fhtml = open("calendar.html", "w")
+    fhtml = open("index.html", "w")
     for line in page.content:
         fhtml.write("%s\n" % line)
     fhtml.close()
