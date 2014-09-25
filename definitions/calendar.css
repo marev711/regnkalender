@@ -1,5 +1,5 @@
  html, body { margin: 0; padding: 0 }
- body { background-color:#060; }
+ body { background-color:#FFF; }
  #container { margin: 3em auto 0 3em; padding-bottom: 3em; background-color: #fff; }
  #month { border-collapse: collapse; margin-left: 2em; }
  #month th, #month td { border: 1px solid #000; }
@@ -17,3 +17,4 @@
  #container h1 { margin: 0 0 .5em .5em; font: 2em Arial, Helvetica, sans-serif; color: #060; }
  #month th { font: 1em bold Arial, Helvetica, sans-serif; }
  p {margin-top: 0; }
+ #explanation td {padding-right: 5em; font: 1em Arial, Helvetica, sans-serif;}
