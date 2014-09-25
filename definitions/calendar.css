@@ -5,7 +5,7 @@
  #month th, #month td { border: 1px solid #000; }
  #month thead { background-color:#9c9; }
  #month td { width: 7em; height: 7em; padding: .2em; vertical-align: top; overflow: auto; }
- td .day { width: 7em; height: 6em; overflow:auto; margin-top: 0; }
+ td .day { width: 7em; height: 1em; overflow:auto; margin-top: 0; }
  #month tbody .weekend { background-color:#ded; }
  #month tbody .next, #month tbody .previous { background-color:#ddd; }
  .rtop { display:block; background:#060; }
